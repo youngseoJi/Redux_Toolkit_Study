@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
 
-import { addUser, deleteUser } from "./features/Users";
+import { addUser, deleteUser, updateUser } from "./features/Users";
 function App() {
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.users.value);
@@ -51,7 +51,15 @@ function App() {
                   setNewUsername(e.target.value);
                 }}
               />
-              <button> Update Username </button>
+              <button
+                onClick={() => {
+                  // 업데이트 할 user id 와 새로운 유저네임을 인자로 전달
+                  dispatch(updateUser({ id: user.id, username: newUsername }));
+                }}
+              >
+                {" "}
+                Update Username{" "}
+              </button>
               <button
                 onClick={() => {
                   // 삭제 할 user.id
