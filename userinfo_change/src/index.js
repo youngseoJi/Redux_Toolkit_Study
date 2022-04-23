@@ -7,9 +7,11 @@ import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "@reduxjs/toolkit";
 // 저장소를 사용하기 위한
 import { Provider } from "react-redux";
-
+import usersReducer from "./features/Users";
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    users: usersReducer,
+  },
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
